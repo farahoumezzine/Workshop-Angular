@@ -3,8 +3,8 @@
         <input type="text" class="form-control" placeholder="Rechercher une catégorie" [(ngModel)]="searchTitle">
       </div>
     <div class="row">
-    <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let categorie of categories">
-        <div *ngIf="searchTitle === '' || categorie.title.toLowerCase().includes(searchTitle.toLowerCase())">
+        <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let categorie of categories | filterCategory:searchTitle">
+            <div *ngIf="searchTitle === '' || categorie.title.toLowerCase().includes(searchTitle.toLowerCase())">
 
        
         <img [src]="categorie.image" 

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Categorie } from '../models/categorie';
 import { CommonModule } from '@angular/common'; /**ngFor directive comes from CommonModule*/
 import { FormsModule } from '@angular/forms';
+import { FilterCategoryPipe } from '../filter-category.pipe';
 @Component({
   selector: 'app-list-categories',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FilterCategoryPipe],
   templateUrl: './list-categories.component.html',
   styleUrl: './list-categories.component.css'
 })
