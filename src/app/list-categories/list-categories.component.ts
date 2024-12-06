@@ -3,10 +3,11 @@ import { Categorie } from '../models/categorie';
 import { CommonModule } from '@angular/common'; /**ngFor directive comes from CommonModule*/
 import { FormsModule } from '@angular/forms';
 import { FilterCategoryPipe } from '../filter-category.pipe';
+import { HighlightDirectiveDirective } from '../highlight-directive.directive';
 @Component({
   selector: 'app-list-categories',
   standalone: true,
-  imports: [CommonModule, FormsModule, FilterCategoryPipe],
+  imports: [CommonModule, FormsModule, FilterCategoryPipe, HighlightDirectiveDirective],
   templateUrl: './list-categories.component.html',
   styleUrl: './list-categories.component.css'
 })
