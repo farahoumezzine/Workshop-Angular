@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common'; /**ngFor directive comes from Co
 import { FormsModule } from '@angular/forms';
 import { FilterCategoryPipe } from '../filter-category.pipe';
 import { HighlightDirectiveDirective } from '../highlight-directive.directive';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-list-categories',
   standalone: true,
-  imports: [CommonModule, FormsModule, FilterCategoryPipe, HighlightDirectiveDirective],
+  imports: [CommonModule, FormsModule, FilterCategoryPipe, HighlightDirectiveDirective, RouterLink],
   templateUrl: './list-categories.component.html',
   styleUrl: './list-categories.component.css'
 })
