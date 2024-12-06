@@ -3,7 +3,7 @@
     <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let categorie of categories">
         
         <img [src]="categorie.image" alt="{{ categorie.title }}" class="img-fluid h-50 w-75">
-            <h3> {{ categorie.title }}</h3> 
+            <h3> {{ categorie.title | uppercase }}</h3> 
             <p> {{ categorie.description }}</p> 
 
               <button class="btn btn-primary">Voir produits</button>
