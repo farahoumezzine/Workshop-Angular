@@ -1,7 +1,12 @@
 <div class="container">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Rechercher une catégorie" [(ngModel)]="searchTitle">
+      </div>
     <div class="row">
     <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let categorie of categories">
-        
+        <div *ngIf="searchTitle === '' || categorie.title.toLowerCase().includes(searchTitle.toLowerCase())">
+
+       
         <img [src]="categorie.image" 
         (click)="showDescription(categorie.description)"
         alt="{{ categorie.title }}" class="img-fluid h-50 w-75">
@@ -50,5 +55,6 @@
     <h3>Produits voiture</h3>
     <button class="btn btn-primary">Voir produits</button>
     </div> --> 
+</div>
     </div>
     </div>
