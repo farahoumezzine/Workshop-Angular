@@ -9,6 +9,10 @@ import { CommonModule } from '@angular/common'; /**ngFor directive comes from Co
   styleUrl: './list-categories.component.css'
 })
 export class ListCategoriesComponent {
+
+  showDescription(description:string){
+    alert(description);
+  }
   categories : Categorie[]=[
     {"id":1,"title":"Grand électroménager",
     "image":"assets/images/categorie_electromenager.jpg", "description":"Qualité top",
