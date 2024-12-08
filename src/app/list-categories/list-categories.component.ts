@@ -5,20 +5,33 @@ import { FormsModule } from '@angular/forms';
 import { FilterCategoryPipe } from '../filter-category.pipe';
 import { HighlightDirectiveDirective } from '../highlight-directive.directive';
 import { RouterLink } from '@angular/router';
+import { DetailsCategoryComponent } from '../details-category/details-category.component';
+
 @Component({
   selector: 'app-list-categories',
   standalone: true,
-  imports: [CommonModule, FormsModule, FilterCategoryPipe, HighlightDirectiveDirective, RouterLink],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    FilterCategoryPipe, 
+    HighlightDirectiveDirective, 
+    RouterLink,
+    DetailsCategoryComponent
+  ],
   templateUrl: './list-categories.component.html',
   styleUrl: './list-categories.component.css'
 })
 export class ListCategoriesComponent {
   searchTitle:string = '';
+  selectedCategory: Categorie | null = null;
 
   showDescription(description:string){
     alert(description);
   }
 
+  onShowDetails(categorie: Categorie) {
+    this.selectedCategory = categorie;
+  }
 
   categories : Categorie[]=[
     {"id":1,"title":"Grand électroménager",

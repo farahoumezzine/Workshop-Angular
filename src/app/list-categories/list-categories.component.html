@@ -21,8 +21,14 @@
                  [routerLink]="['/products-category-qp']" 
                  [queryParams]="{categoryId: categorie.id}">Voir produits 2</button>
 
+                 <button class="btn btn-info ms-2" (click)="onShowDetails(categorie)">Voir détails</button>
+
               <p class="text-danger" *ngIf="!categorie.available">Catégorie non disponible</p>
 
+              <app-details-category 
+              *ngIf="selectedCategory && selectedCategory.id === categorie.id"
+              [category]="selectedCategory">
+            </app-details-category>
               
           
 
