@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Categorie } from '../models/categorie';
 import { CommonModule } from '@angular/common'; /**ngFor directive comes from CommonModule*/
 import { FormsModule } from '@angular/forms';
@@ -6,6 +6,9 @@ import { FilterCategoryPipe } from '../filter-category.pipe';
 import { HighlightDirectiveDirective } from '../highlight-directive.directive';
 import { RouterLink } from '@angular/router';
 import { DetailsCategoryComponent } from '../details-category/details-category.component';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-categories',
@@ -16,21 +19,46 @@ import { DetailsCategoryComponent } from '../details-category/details-category.c
     FilterCategoryPipe, 
     HighlightDirectiveDirective, 
     RouterLink,
-    DetailsCategoryComponent
+    DetailsCategoryComponent,
+    RouterModule
   ],
   templateUrl: './list-categories.component.html',
   styleUrl: './list-categories.component.css'
 })
-export class ListCategoriesComponent {
-  searchTitle:string = '';
+export class ListCategoriesComponent implements OnInit {
+  searchTitle: string = '';
   selectedCategory: Categorie | null = null;
+  selectedCategoryId: number | null = null;
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    // Listen to route params to update selected category
+    this.route.firstChild?.params.subscribe(params => {
+      if (params['id']) {
+        const categoryId = +params['id'];
+        this.selectedCategoryId = categoryId;
+        this.selectedCategory = this.categories.find(c => c.id === categoryId) || null;
+      }
+    });
+  }
 
   showDescription(description:string){
     alert(description);
   }
 
-  onShowDetails(categorie: Categorie) {
-    this.selectedCategory = categorie;
+  showDetails(categorie: Categorie) {
+    if (this.selectedCategoryId === categorie.id) {
+      // If already selected, deselect and navigate back
+      this.selectedCategoryId = null;
+      this.selectedCategory = null;
+      this.router.navigate(['home']);
+    } else {
+      // Select and navigate to details
+      this.selectedCategoryId = categorie.id;
+      this.selectedCategory = categorie;
+      this.router.navigate(['home', 'details', categorie.id]);
+    }
   }
 
   categories : Categorie[]=[

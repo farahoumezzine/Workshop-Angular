@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Categorie } from '../models/categorie';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-details-category',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <div class="container mt-4">
       <div class="card">

@@ -1,73 +1,36 @@
 <div class="container">
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Rechercher une catégorie" [(ngModel)]="searchTitle">
-      </div>
+    </div>
     <div class="row">
         <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let categorie of categories | filterCategory:searchTitle">
             <div *ngIf="searchTitle === '' || categorie.title.toLowerCase().includes(searchTitle.toLowerCase())">
+                <img [src]="categorie.image" 
+                    appHighlightDirective
+                    (click)="showDescription(categorie.description)"
+                    alt="{{ categorie.title }}" class="img-fluid h-50 w-75">
+                <h3>{{ categorie.title | uppercase }}</h3> 
+                <p>{{ categorie.description }}</p> 
 
-       
-        <img [src]="categorie.image" 
-        appHighlightDirective
-        (click)="showDescription(categorie.description)"
-        alt="{{ categorie.title }}" class="img-fluid h-50 w-75">
-            <h3> {{ categorie.title | uppercase }}</h3> 
-            <p> {{ categorie.description }}</p> 
-
-              <button class="btn btn-primary" *ngIf="categorie.available"  
-              [routerLink]="['/products', categorie.id] ">Voir produits</button>
+                <button class="btn btn-primary" *ngIf="categorie.available"  
+                    [routerLink]="['/products', categorie.id]">Voir produits</button>
 
               <button class="btn btn-secondary ms-2" *ngIf="categorie.available"  
                  [routerLink]="['/products-category-qp']" 
                  [queryParams]="{categoryId: categorie.id}">Voir produits 2</button>
 
-                 <button class="btn btn-info ms-2" (click)="onShowDetails(categorie)">Voir détails</button>
+                <button class="btn btn-info ms-2" (click)="showDetails(categorie)">
+                    {{ selectedCategoryId === categorie.id ? 'Masquer détails' : 'Voir détails' }}
+                </button>
 
-              <p class="text-danger" *ngIf="!categorie.available">Catégorie non disponible</p>
+                <p class="text-danger" *ngIf="!categorie.available">Catégorie non disponible</p>
 
-              <app-details-category 
-              *ngIf="selectedCategory && selectedCategory.id === categorie.id"
-              [category]="selectedCategory">
-            </app-details-category>
-              
-          
-
-          <!-- 
-    <img src="assets/images/categorie_electromenager.jpg" alt="Grand
-    électroménager" class="img-fluid h-50 w-75">
-    <h3>Grand électroménager</h3>
-    <button class="btn btn-primary">Voir produits</button>
+                <app-details-category 
+                    *ngIf="selectedCategoryId === categorie.id"
+                    [category]="categorie">
+                </app-details-category>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4" style="margin-bottom: 20px;">
-    <img src="assets/images/categorie_petit_electromenager.jpg" alt="Petit
-    électroménager" class="img-fluid h-50 w-75">
-    <h3>Petit électroménager</h3>
-    <button class="btn btn-primary">Voir produits</button>
-    </div>
-    <div class="col-md-4" style="margin-bottom: 20px;">
-    <img src="assets/images/categorie_produits_informatiques.png"
-    alt="Produits informatiques" class="img-fluid h-50 w-75">
-    <h3>Produits informatiques</h3>
-    <button class="btn btn-primary">Voir produits</button>
-    </div>
-    <div class="col-md-4" style="margin-bottom: 20px;">
-    <img src="assets/images/categorie_smartPhone.jpg" alt="Smart Phones"
-    class="img-fluid h-50 w-75">
-    <h3>Smart Phones</h3>
-    <button class="btn btn-primary">Voir produits</button>
-    </div>
-    <div class="col-md-4" style="margin-bottom: 20px;">
-    <img src="assets/images/categorie_tv_image_son.jpg" alt="TV, images et
-    son" class="img-fluid h-50 w-75">
-    <h3>TV, images et son</h3>
-    <button class="btn btn-primary">Voir produits</button>
-    </div>
-    <div class="col-md-4" style="margin-bottom: 20px;">
-    <img src="assets/images/produits_nettoyages.jpg" alt="Produits voitures"
-    class="img-fluid h-50 w-75">
-    <h3>Produits voiture</h3>
-    <button class="btn btn-primary">Voir produits</button>
-    </div> --> 
+    <router-outlet></router-outlet>
 </div>
-    </div>
-    </div>
