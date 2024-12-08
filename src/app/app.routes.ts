@@ -1,7 +1,8 @@
-import { Routes } from '@angular/router';
+import { Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { ProductsCategoryComponentComponent } from './products-category-component/products-category-component.component';
+import { ProductsCategoryQPComponent } from './products-category-qp/products-category-qp.component';
 
 export const routes: Routes = [
     {
@@ -12,6 +13,10 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+        path: 'products-category-qp',
+        component: ProductsCategoryQPComponent
     },
     {
         path: 'products/:categoryId',

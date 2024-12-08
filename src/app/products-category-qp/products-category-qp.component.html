@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of filteredProducts">
+      <div class="card mb-4">
+        <img [src]="product.image" class="card-img-top" [alt]="product.name">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">Prix: {{product.price}} €</p>
+          <p class="card-text">Marque: {{product.brand}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

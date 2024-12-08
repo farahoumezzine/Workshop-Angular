@@ -14,7 +14,13 @@
             <h3> {{ categorie.title | uppercase }}</h3> 
             <p> {{ categorie.description }}</p> 
 
-              <button class="btn btn-primary" *ngIf="categorie.available"  [routerLink]="['/products', categorie.id] ">Voir produits</button>
+              <button class="btn btn-primary" *ngIf="categorie.available"  
+              [routerLink]="['/products', categorie.id] ">Voir produits</button>
+
+              <button class="btn btn-secondary ms-2" *ngIf="categorie.available"  
+                 [routerLink]="['/products-category-qp']" 
+                 [queryParams]="{categoryId: categorie.id}">Voir produits 2</button>
+
               <p class="text-danger" *ngIf="!categorie.available">Catégorie non disponible</p>
 
               
