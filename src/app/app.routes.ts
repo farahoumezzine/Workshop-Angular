@@ -6,6 +6,9 @@ import { ProductsCategoryQPComponent } from './products-category-qp/products-cat
 import { DetailsCategoryComponent } from './details-category/details-category.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { NgModule } from '@angular/core';
+import { FormProductComponentComponent } from './form-product-component/form-product-component.component';
+
+
 
 export const routes: Routes = [
     /***Lazy Loading ****/
@@ -57,6 +60,10 @@ export const routes: Routes = [
     {
         path: 'products/:categoryId',
         component: ProductsCategoryComponentComponent
+    },
+    {
+        path: 'add-product',
+        component: FormProductComponentComponent
     },
     {
         path: '**',
