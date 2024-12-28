@@ -6,7 +6,7 @@
         <input type="text" class="form-control" id="name" name="name" 
                [(ngModel)]="product.name" required minlength="5"
                pattern="[a-zA-Z]*" #name="ngModel">
-        <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <div class="alert alert-danger" *ngIf="name.invalid && name.dirty && name.touched">
           <div *ngIf="name.errors?.['required']">Name is required.</div>
           <div *ngIf="name.errors?.['minlength']">Name must be at least 5 characters long.</div>
           <div *ngIf="name.errors?.['pattern']">Name must contain only letters.</div>
@@ -23,7 +23,7 @@
         <label for="categoryId" class="form-label">Category ID</label>
         <input type="number" class="form-control" id="categoryId" name="categoryId" 
                [(ngModel)]="product.categoryId" required #categoryId="ngModel">
-        <div class="alert alert-danger" *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)">
+        <div class="alert alert-danger" *ngIf="categoryId.invalid && categoryId.dirty && categoryId.touched">
           <div *ngIf="categoryId.errors?.['required']">Category ID is required.</div>
         </div>
       </div>
@@ -39,7 +39,7 @@
         <input type="text" class="form-control" id="price" name="price" 
                [(ngModel)]="product.price" required 
                pattern="^\d+(\.\d+)?$" #price="ngModel">
-        <div class="alert alert-danger" *ngIf="price.invalid && (price.dirty || price.touched)">
+        <div class="alert alert-danger" *ngIf="price.invalid &&  price.dirty && price.touched">
           <div *ngIf="price.errors?.['required']">Price is required.</div>
           <div *ngIf="price.errors?.['pattern']">Price must be a valid number.</div>
         </div>
@@ -56,12 +56,12 @@
         <input type="text" class="form-control" id="promotion" name="promotion" 
                [(ngModel)]="product.promotion" 
                pattern="^(0|[1-9][0-9]?)$" #promotion="ngModel">
-        <div class="alert alert-danger" *ngIf="promotion.invalid && (promotion.dirty || promotion.touched)">
+        <div class="alert alert-danger" *ngIf="promotion.invalid && promotion.dirty && promotion.touched">
           <div *ngIf="promotion.errors?.['pattern']">Promotion must be a number between 0 and 100.</div>
         </div>
       </div>
   
-      <button type="submit" class="btn btn-primary" [disabled]="!productForm.form.valid">Save</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Save</button>
     </form>
   
     <div class="mt-4">

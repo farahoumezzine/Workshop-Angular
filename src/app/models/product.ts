@@ -2,11 +2,11 @@ export class Product {
     id: number;
 name: string;
 image:string;
-categoryId: number;
+categoryId: number | null;
 description : string;
-price: number;
+price: number | null;
 brand:string;
-promotion : number;
+promotion : number | null;
 
 constructor(id: number, name: string, image: string, categoryId: number, description: string, price: number, brand: string, promotion: number) {
     this.id = id;

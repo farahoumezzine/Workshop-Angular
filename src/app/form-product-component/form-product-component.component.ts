@@ -15,29 +15,28 @@ export class FormProductComponentComponent {
     id: 0,
     name: '',
     image: '',
-    categoryId: 0,
+    categoryId: null,
     description: '',
-    price: 0,
+    price: null,
     brand: '',
-    promotion: 0
+    promotion: null
   };
   listProducts: Product[] = [];
 
   onSubmit() {
-    // Generate a new ID (simple increment for demo)
-    this.product.id = this.listProducts.length + 1;
-    // Add the product to the list
-    this.listProducts.push({...this.product});
-    // Reset the form
-    this.product = {
-      id: 0,
-      name: '',
-      image: '',
-      categoryId: 0,
-      description: '',
-      price: 0,
-      brand: '',
-      promotion: 0
-    };
+    if (this.product.name && this.product.categoryId && this.product.price) {
+      this.product.id = this.listProducts.length + 1;
+      this.listProducts.push({...this.product});
+      this.product = {
+        id: 0,
+        name: '',
+        image: '',
+        categoryId: null,
+        description: '',
+        price: null,
+        brand: '',
+        promotion: null
+      };
+    }
   }
 }
