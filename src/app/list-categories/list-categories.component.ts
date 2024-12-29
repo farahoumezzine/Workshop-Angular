@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CardComponentComponent } from '../card-component/card-component.component';
+import { ShortList } from '../models/short-list';
 
 @Component({
   selector: 'app-list-categories',
@@ -31,6 +32,8 @@ export class ListCategoriesComponent implements OnInit {
   searchTitle: string = '';
   selectedCategory: Categorie | null = null;
   selectedCategoryId: number | null = null;
+  shortList: ShortList[] = [];
+  private readonly userId = 1; // Example user ID
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -87,4 +90,25 @@ export class ListCategoriesComponent implements OnInit {
     "description":"Des produits sans sulfate","available":false},
 
     ]
+
+  addToShortList(categoryId: number) {
+    const exists = this.shortList.some(item => 
+      item.idUser === this.userId && 
+      item.idElement === categoryId && 
+      item.typeElement === 'category'
+    );
+
+    if (!exists) {
+      const shortListItem = {
+        id: this.shortList.length + 1,
+        idUser: this.userId,
+        idElement: categoryId,
+        typeElement: 'category'
+      };
+      this.shortList.push(shortListItem);
+      console.log('Added to shortlist:', shortListItem);
+    } else {
+      console.log('Item already in shortlist');
+    }
+  }
 }

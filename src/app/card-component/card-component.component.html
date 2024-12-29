@@ -19,6 +19,10 @@
               [queryParams]="{categoryId: id}">
         Voir produits 2
       </button>
+
+      <button class="btn btn-success ms-2" (click)="onAddToShortList()">
+        Add to shortlist
+      </button>
   
       <p class="text-danger" *ngIf="!available">Catégorie non disponible</p>
     </div>

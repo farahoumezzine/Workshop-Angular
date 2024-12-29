@@ -10,7 +10,8 @@
         [title]="categorie.title"
         [description]="categorie.description"
         [available]="categorie.available"
-        [btnText]="'Voir produits'">
+        [btnText]="'Voir produits'"
+        (addToShortList)="addToShortList($event)">
       </app-card-component>
     </div>
   </div>
