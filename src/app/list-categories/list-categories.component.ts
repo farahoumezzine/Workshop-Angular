@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { Categorie } from '../models/categorie';
 import { CommonModule } from '@angular/common'; /**ngFor directive comes from CommonModule*/
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CardComponentComponent } from '../card-component/card-component.component';
 import { ShortList } from '../models/short-list';
+import { ListProductsComponentComponent } from '../list-products-component/list-products-component.component';
 
 @Component({
   selector: 'app-list-categories',
@@ -23,12 +24,14 @@ import { ShortList } from '../models/short-list';
     RouterLink,
     DetailsCategoryComponent,
     RouterModule,
-    CardComponentComponent
+    CardComponentComponent,
+    ListProductsComponentComponent
   ],
   templateUrl: './list-categories.component.html',
   styleUrl: './list-categories.component.css'
 })
-export class ListCategoriesComponent implements OnInit {
+export class ListCategoriesComponent implements OnInit, AfterViewInit {
+  @ViewChildren(CardComponentComponent) cardComponents!: QueryList<CardComponentComponent>;
   searchTitle: string = '';
   selectedCategory: Categorie | null = null;
   selectedCategoryId: number | null = null;
@@ -45,6 +48,12 @@ export class ListCategoriesComponent implements OnInit {
         this.selectedCategoryId = categoryId;
         this.selectedCategory = this.categories.find(c => c.id === categoryId) || null;
       }
+    });
+  }
+
+  ngAfterViewInit() {
+    this.cardComponents.forEach(card => {
+      card.btnText = 'Voir produits';
     });
   }
 

@@ -15,8 +15,9 @@ export class CardComponentComponent {
   @Input() title!: string;
   @Input() description!: string;
   @Input() available!: boolean;
-  @Input() btnText: string = 'Voir produits';
   @Output() addToShortList = new EventEmitter<number>();
+  
+  public btnText: string = 'Voir produits';
 
   showDescription() {
     alert(this.description);

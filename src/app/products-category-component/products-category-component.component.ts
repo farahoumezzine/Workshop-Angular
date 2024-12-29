@@ -28,19 +28,18 @@ export class ProductsCategoryComponentComponent implements OnInit {
     );
   }
   listProducts : Product[]=[
-    {"id":1, "name":"Refrigérateur LGInox","image":"assets/images/refrigerateur-lg.jpg","categoryId":1,
-    "description":"","price":2800,"brand":"LG","promotion":0},
-    {"id":2, "name":"Refrigérateur SamsungBlanc","image":"assets/images/refrigerateur_samsung.jpg","categoryId":1,
-    "description":"", "price":2400,"brand":"Samsung","promotion":0},
-    {"id":3, "name":"Lave vaisselle Beko",
-    "image":"assets/images/lave_vaisselle.jpg", "categoryId":1,
-    "description":"","price":1875,"brand":"BEKO", "promotion":0},
-    {"id":4, "name":"Oppo SmartPhone","image":"assets/images/oppo_smart.jpg","categoryId":4,
-    "description":"", "price":1200,"brand":"OPPO","promotion":0},{"id":5, "name":"Hachoir",
-      "image":"assets/images/hachoir.jpg","categoryId":2,
-      "description":"","price":120,"brand":"Moulinex", "promotion":0},
-      {"id":6, "name":"TV 50''LG","image":"assets/images/tv_lg.jpg","categoryId":5, "description":"",
-      "price":1800,"brand":"LG","promotion":0},
-      ]
+    {"id":1, "title":"Refrigérateur LG Inox", "image":"assets/images/refrigerateur-lg.jpg", "categoryId":1,
+    "description":"2800 dt", "promotion":false, "quantity":10},
+    {"id":2, "title":"Refrigérateur Samsung Blanc", "image":"assets/images/refrigerateur_samsung.jpg", "categoryId":1,
+    "description":"2400 dt", "promotion":false, "quantity":15},
+    {"id":3, "title":"Lave vaisselle Beko", "image":"assets/images/lave_vaisselle.jpg", "categoryId":1,
+    "description":"1875 dt", "promotion":false, "quantity":20},
+    {"id":4, "title":"Oppo SmartPhone", "image":"assets/images/oppo_smart.jpg", "categoryId":4,
+    "description":"1200 dt", "promotion":false, "quantity":25},
+    {"id":5, "title":"Hachoir", "image":"assets/images/hachoir.jpg", "categoryId":2,
+    "description":"120 dt", "promotion":false, "quantity":30},
+    {"id":6, "title":"TV 50''LG", "image":"assets/images/tv_lg.jpg", "categoryId":5,
+    "description":"1800 dt", "promotion":false, "quantity":35}
+  ]
 }
 
