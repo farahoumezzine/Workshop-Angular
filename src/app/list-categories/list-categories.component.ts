@@ -9,6 +9,7 @@ import { DetailsCategoryComponent } from '../details-category/details-category.c
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { CardComponentComponent } from '../card-component/card-component.component';
 
 @Component({
   selector: 'app-list-categories',
@@ -20,7 +21,8 @@ import { ActivatedRoute } from '@angular/router';
     HighlightDirectiveDirective, 
     RouterLink,
     DetailsCategoryComponent,
-    RouterModule
+    RouterModule,
+    CardComponentComponent
   ],
   templateUrl: './list-categories.component.html',
   styleUrl: './list-categories.component.css'

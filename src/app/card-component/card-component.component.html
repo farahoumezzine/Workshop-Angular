@@ -1,0 +1,25 @@
+<div class="card">
+    <img [src]="image" 
+         appHighlightDirective
+         (click)="showDescription()"
+         [alt]="title" 
+         class="img-fluid h-50 w-75">
+    
+    <div class="card-body">
+      <h3 class="card-title">{{ title | uppercase }}</h3>
+      <p class="card-text">{{ description }}</p>
+  
+      <button class="btn btn-primary" *ngIf="available"  
+              [routerLink]="['/products', id]">
+        {{ btnText }}
+      </button>
+  
+      <button class="btn btn-secondary ms-2" *ngIf="available"  
+              [routerLink]="['/products-category-qp']" 
+              [queryParams]="{categoryId: id}">
+        Voir produits 2
+      </button>
+  
+      <p class="text-danger" *ngIf="!available">Catégorie non disponible</p>
+    </div>
+  </div>

@@ -1,36 +1,17 @@
 <div class="container">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Rechercher une catégorie" [(ngModel)]="searchTitle">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Rechercher une catégorie" [(ngModel)]="searchTitle">
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let categorie of categories | filterCategory:searchTitle">
+      <app-card-component
+        [id]="categorie.id"
+        [image]="categorie.image"
+        [title]="categorie.title"
+        [description]="categorie.description"
+        [available]="categorie.available"
+        [btnText]="'Voir produits'">
+      </app-card-component>
     </div>
-    <div class="row">
-        <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let categorie of categories | filterCategory:searchTitle">
-            <div *ngIf="searchTitle === '' || categorie.title.toLowerCase().includes(searchTitle.toLowerCase())">
-                <img [src]="categorie.image" 
-                    appHighlightDirective
-                    (click)="showDescription(categorie.description)"
-                    alt="{{ categorie.title }}" class="img-fluid h-50 w-75">
-                <h3>{{ categorie.title | uppercase }}</h3> 
-                <p>{{ categorie.description }}</p> 
-
-                <button class="btn btn-primary" *ngIf="categorie.available"  
-                    [routerLink]="['/products', categorie.id]">Voir produits</button>
-
-              <button class="btn btn-secondary ms-2" *ngIf="categorie.available"  
-                 [routerLink]="['/products-category-qp']" 
-                 [queryParams]="{categoryId: categorie.id}">Voir produits 2</button>
-
-                <button class="btn btn-info ms-2" (click)="showDetails(categorie)">
-                    {{ selectedCategoryId === categorie.id ? 'Masquer détails' : 'Voir détails' }}
-                </button>
-
-                <p class="text-danger" *ngIf="!categorie.available">Catégorie non disponible</p>
-
-                <app-details-category 
-                    *ngIf="selectedCategoryId === categorie.id"
-                    [category]="categorie">
-                </app-details-category>
-            </div>
-        </div>
-    </div>
-    <router-outlet></router-outlet>
+  </div>
 </div>
